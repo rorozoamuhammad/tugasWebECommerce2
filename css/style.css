@@ -464,14 +464,14 @@ main .src .bungkus .hasilTidakDitemukan {
 }
 
 .notif :where(.full .bungkus, .fullTerbeli .bungkus) {
-    width: 35%;
+    width: 40%;
     aspect-ratio: 1/1;
     color: var(--color-first);
     background-color: var(--hover-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
+    font-size: 1.3em;
     border-radius: 20px;
 }
 
@@ -659,7 +659,7 @@ main footer {
     }
 
     /* full */
-    main .fullBlack .full .fullCard {
+    main .full .fullBlack .fullCard {
         width: 80vw;
         height: 60vh;
     }
@@ -697,6 +697,13 @@ main footer {
 
     main .src form button {
         font-size: 1.3em;
+    }
+
+    /* notif */
+    .notif :where(.full .bungkus, .fullTerbeli .bungkus) {
+        width: 55%;
+        text-align: center;
+        font-size: 1.5em;
     }
 }
 
@@ -786,7 +793,11 @@ main footer {
     }
 
     /* full */
-    main .fullBlack .full .fullCard article h1 {
+    main .full .fullBlack .fullCard {
+        width: 80%;
+    }
+
+    main .full .fullBlack .fullCard article h1 {
         font-size: 1.5em;
     }
 
@@ -845,5 +856,12 @@ main footer {
 
     main .help .ResepYangSudahDibeli {
         grid-area: kedua;
+    }
+
+    /* notif */
+
+    .notif :where(.full .bungkus, .fullTerbeli .bungkus) {
+        width: 80%;
+        font-size: 1.3em;
     }
 }
