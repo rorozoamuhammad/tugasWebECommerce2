@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-in</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('../img/Is\ there\ any\ way\ I\ can\ get\ this\ image\ in\ higher\ quality\ and\ 16_9\ resolution_\ I\ dont\ know\ where\ I\ got\ it\ from\ but\ I\ want\ this\ as\ my\ wallpaper.jfif');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        main[data-online="no"] {
+            background-image: url('');
+        }
+
+        main::after {
+            content: '';
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        main form {
+            z-index: 999999;
+            width: 35%;
+            aspect-ratio: 1/1;
+            background-color: rgba(255, 255, 255, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+
+        main form[data-online="no"] {
+            display: none;
+        }
+
+        main form h1 {
+            color: #FFC090;
+            font-size: 2.3em;
+        }
+
+        main form :where(.nama, .password) {
+            width: 90%;
+            padding: 5%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        main form :where(.nama .first label, .nama .second label, .password .passFirst label, .password .confirmPass label, .email label) {
+            font-size: 1.3em;
+            color: #D7A86E;
+            font-weight: bold;
+        }
+
+        main form :where(.nama .first input, .nama .second input, .password .passFirst input, .password .confirmPass input) {
+            margin-top: .5em;
+            padding: .5em;
+            width: 100%;
+            border: 2px solid #FFC090;
+            outline: none;
+            border-radius: 10px;
+        }
+
+        .classValid {
+            border: 2px solid red;
+        }
+
+        .classTxtValid {
+            color: red;
+        }
+
+        main form .email {
+            width: 90%;
+            padding: 5%;
+        }
+
+        main form .email input {
+            width: 90%;
+            padding: .6em;
+            margin-top: .5em;
+            outline: none;
+            border-radius: 10px;
+            border: 2px solid #FFC090;
+        }
+
+        main form button {
+            margin-top: 1em;
+            padding: .6em 2.3em;
+            border-radius: 10px;
+            border: 2px solid #FFC090;
+            background-color: transparent;
+            font-size: 1em;
+            transition: 500ms;
+        }
+
+        main form button:hover {
+            cursor: pointer;
+            background-color: #FFC090;
+            border: 2px solid transparent;
+            color: white;
+        }
+
+        main .offline {
+            color: red;
+            display: none;
+            z-index: 999999;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main .offline[data-off="yes"] {
+            display: flex;
+        }
+
+        @media screen and (max-width: 990px) {
+            main form {
+                width: 60%;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            main form {
+                width: 80%;
+            }
+
+            main form :where(.nama, .password) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            main form :where(.nama .first input, .nama .second input, .password .passFirst input, .password .confirmPass input) {
+                width: 65vw;
+                margin-bottom: .5em;
+            }
+
+            main form button {
+                margin-bottom: 1em;
+            }
+
+            main form h1 {
+                margin-top: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main id="online" data-online="yes">
+        <form action="../login.html" id="form" data-online="yes">
+            <h1>Sign-in</h1>
+            <div class="nama">
+                <div class="first">
+                    <label for="first">First Name</label><br>
+                    <input type="text" id="first" required autocomplete="off">
+                </div>
+                <div class="second">
+                    <label for="second">Second Name</label><br>
+                    <input type="text" id="second" autocomplete="off">
+                </div>
+            </div>
+            <div class="email">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" required autocomplete="off">
+            </div>
+            <div class="password">
+                <div class="passFirst">
+                    <label for="pass" id="txtPass">Password</label><br>
+                    <input type="password" id="pass" required autocomplete="off">
+                </div>
+                <div class="confirmPass">
+                    <label for="konformPass" id="konfirmTxtPass">Konfirmasi Password</label><br>
+                    <input type="password" id="konformPass" required autocomplete="off">
+                </div>
+            </div>
+            <p>Have Account? <a href="../login.html">Login</a></p>
+            <button type="submit" id="btn">Daftar</button>
+        </form>
+
+        <h1 class="offline" id="offline" data-off="no">Offline</h1>
+    </main>
+
+    <script>
+        const pass = document.getElementById('pass');
+        const passkonfirm = document.getElementById('konformPass');
+        const txtPass = document.getElementById('txtPass');
+        const confirmTxt = document.getElementById('konfirmTxtPass');
+        const btn = document.getElementById('btn');
+        const offline = document.getElementById('offline');
+        const online = document.getElementById('online');
+        const form = document.getElementById('form');
+
+        pass.addEventListener('keyup', () => {
+            if (pass.value != passkonfirm.value) {
+                pass.classList.add('classValid');
+                passkonfirm.classList.add('classValid');
+                txtPass.classList.add('classTxtValid');
+                confirmTxt.classList.add('classTxtValid');
+            } else {
+                pass.classList.remove('classValid');
+                passkonfirm.classList.remove('classValid');
+                txtPass.classList.remove('classTxtValid');
+                confirmTxt.classList.remove('classTxtValid');
+            }
+        });
+
+        passkonfirm.addEventListener('keyup', () => {
+            if (pass.value != passkonfirm.value) {
+                passkonfirm.classList.add('classValid');
+                pass.classList.add('classValid');
+                txtPass.classList.add('classTxtValid');
+                confirmTxt.classList.add('classTxtValid');
+            } else {
+                passkonfirm.classList.remove('classValid');
+                pass.classList.remove('classValid');
+                txtPass.classList.remove('classTxtValid');
+                confirmTxt.classList.remove('classTxtValid');
+            }
+        });
+
+        btn.addEventListener('click', () => {
+            alert('Berhasil Mendaftar');
+        });
+
+        if (navigator.online) {
+            offline.dataset.off = 'no';
+            online.dataset.online = 'yes';
+            form.dataset.online = 'yes';
+        }
+        if (navigator.offline) {
+            offline.dataset.off = 'yes';
+            online.dataset.online = 'no';
+            form.dataset.online = 'no';
+        }
+
+        window.addEventListener('offline', () => {
+            offline.dataset.off = 'yes';
+            online.dataset.online = 'no';
+            form.dataset.online = 'no';
+        });
+
+        window.addEventListener('online', () => {
+            offline.dataset.off = 'no';
+            online.dataset.online = 'yes';
+            form.dataset.online = 'yes';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,849 @@
+:root {
+    --main-color: #FFC090;
+    --color-first: #f7ecde;
+    --hover-color: #B1D7B4;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--hover-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-first);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.scroll {
+    overflow-y: hidden;
+}
+
+#offline {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 3em;
+}
+
+main {
+    width: 100vw;
+}
+
+:is(main[data-online="no"], #offline[data-online="no"]) {
+    display: none;
+}
+
+/* navbar */
+
+main nav {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5em 0;
+    background-color: transparent;
+    gap: 30em;
+    color: var(--color-first);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99999999999;
+}
+
+main nav .logo {
+    font-size: 1.5em;
+}
+
+main nav ul {
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main nav ul li {
+    font-size: 1.3em;
+    transition: 500ms;
+}
+
+main nav ul p {
+    font-size: 1.5em;
+}
+
+main nav ul li a {
+    text-decoration: none;
+    color: var(--color-first);
+    transition: 500ms;
+}
+
+main nav ul li a[data-nav="yes"] {
+    color: var(--hover-color);
+}
+
+main nav ul li a:hover {
+    color: var(--hover-color);
+}
+
+main nav ul li:hover {
+    cursor: pointer;
+    color: var(--hover-color);
+}
+
+main nav ul li[data-nav="yes"] {
+    color: var(--hover-color);
+}
+
+/* tampilan mobile navbar */
+main nav .mobile {
+    display: none;
+}
+
+/* header */
+main header {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 99999;
+}
+
+main header :where(.first img, .second img) {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -9;
+}
+
+main header :where(.first, .second) {
+    width: 100vw;
+    height: 100vh;
+}
+
+main header :where(.first h1, .second h1) {
+    z-index: 9999;
+    color: var(--color-first);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main header .first h1 {
+    font-size: 3em;
+    width: 100vw;
+    height: 100vh;
+}
+
+main header .second h1 {
+    font-size: 2.5em;
+    width: 100vw;
+    height: 100vh;
+}
+
+main header .first {
+    display: block;
+    transition: 500ms;
+}
+
+main header .second {
+    display: none;
+    transition: 500ms;
+}
+
+/* home */
+
+main :where(.home, .src .bungkus) {
+    width: 100vw;
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3em;
+    margin: auto;
+    margin-top: 0;
+    background-color: var(--hover-color);
+    z-index: 99999999;
+}
+
+main :is(.home[data-muncul="no"], .src[data-muncul="no"], .help[data-muncul="no"], .profile[data-muncul="no"]) {
+    display: none;
+}
+
+main :where(.home .card, .src .bungkus .card) {
+    width: 25vw;
+    background-color: var(--color-first);
+    padding: 1em;
+    border-radius: 10px;
+}
+
+main :where(.home .card img, .src .bungkus .card img) {
+    width: 25vw;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+}
+
+main :where(.home .card h1, .src .bungkus .card h1) {
+    margin-top: .5em;
+    font-size: 1.7em;
+    color: var(--main-color);
+}
+
+main :where(.home .card p, .src .bungkus .card p) {
+    margin-top: .5em;
+    font-size: 1.2em;
+}
+
+main :where(.home .card button, .src .bungkus .card button) {
+    margin-top: 1em;
+    padding: .5em 2.5em;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 3px solid var(--hover-color);
+    transition: 500ms;
+    font-size: 1em;
+}
+
+main :where(.home .card button:hover, .src .bungkus .card button:hover) {
+    cursor: pointer;
+    background-color: var(--hover-color);
+    color: var(--color-first);
+}
+
+/* full */
+
+main .full .fullBlack {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    z-index: 999999999999999;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .full .fullBlack .fullCard {
+    width: 50vw;
+    height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: auto;
+    padding: 1em;
+    background-color: var(--color-first);
+    border-radius: 15px;
+}
+
+main .full .fullBlack .fullCard img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    margin-block: 1em;
+    border-radius: 10px;
+}
+
+main .full .fullBlack .fullCard .close {
+    cursor: pointer;
+}
+
+main .full .fullBlack .fullCard p {
+    font-size: 1.5em;
+    user-select: none;
+}
+
+main .full .fullBlack .fullCard article h1 {
+    font-size: 2.5em;
+    color: var(--main-color);
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+
+main .full .fullBlack .fullCard article p:nth-child(2) {
+    font-size: 1.6em;
+    margin-bottom: 1em;
+}
+
+main .full .fullBlack .fullCard article .langkah {
+    font-size: 1.3em;
+    margin-block: 1em;
+    filter: blur(3px);
+}
+
+main .full .fullBlack .fullCard article .langkah[data-terbeli="yes"] {
+    filter: blur(0);
+}
+
+main .full .fullBlack .fullCard article a {
+    margin-bottom: .5em;
+    display: block;
+    font-size: 1.3em;
+}
+
+main .full .fullBlack .fullCard article button {
+    padding: .5em 2.5em;
+    border: 3px solid var(--hover-color);
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 1.1em;
+    transition: 500ms;
+}
+
+main .full .fullBlack .fullCard article button:hover {
+    background-color: var(--hover-color);
+    color: var(--color-first);
+    cursor: pointer;
+}
+
+/* pembayaran */
+main .pembayaran .box {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99999999999;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+main .pembayaran .box .img {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+main .pembayaran .box .img img {
+    width: 100%;
+}
+
+main .pembayaran .box article {
+    margin: auto;
+    width: 75%;
+    height: 50%;
+    padding: 2em;
+}
+
+main .pembayaran .box article p:nth-child(1) {
+    text-align: right;
+    font-size: 1.7em;
+    cursor: pointer;
+}
+
+main .pembayaran .box article h1 {
+    margin-block: 1em;
+    font-size: 2.5em;
+    color: var(--main-color);
+}
+
+main .pembayaran .box article p:nth-child(3) {
+    font-size: 2em;
+    margin-bottom: .5em;
+}
+
+main .pembayaran .box article select {
+    margin-bottom: 2em;
+    width: 20%;
+    padding: .5em;
+    font-size: 1.1em;
+    border: none;
+    outline: none;
+    border: 3px solid var(--hover-color);
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+main .pembayaran .box article button {
+    padding: .5em 2.5em;
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: 3px solid var(--hover-color);
+    background-color: transparent;
+    transition: 500ms;
+}
+
+main .pembayaran .box article button:hover {
+    cursor: pointer;
+    background-color: var(--hover-color);
+    color: var(--color-first);
+}
+
+/* search */
+main .src {
+    width: 100vw;
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 5em;
+    margin: auto;
+    margin-top: 0;
+    background-color: var(--hover-color);
+    z-index: 99999999;
+}
+
+main .src form {
+    width: 50%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .src form input {
+    width: 70%;
+    padding: .7em;
+    font-size: 1.1em;
+    outline: none;
+    border: 3px solid var(--color-first);
+    background-color: var(--main-color);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+main .src form input::placeholder {
+    color: var(--color-first);
+}
+
+main .src form button {
+    padding: .7em;
+    background-color: var(--main-color);
+    border: 3px solid var(--color-first);
+    border-left: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    outline: none;
+}
+
+main .src .bungkus .hasilTidakDitemukan {
+    color: var(--color-first);
+    font-size: 4em;
+    font-weight: bold;
+}
+
+/* notif */
+.notif :where(.full, .fullTerbeli) {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 99999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notif :where(.full .bungkus, .fullTerbeli .bungkus) {
+    width: 35%;
+    aspect-ratio: 1/1;
+    color: var(--color-first);
+    background-color: var(--hover-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border-radius: 20px;
+}
+
+/* help */
+main .help {
+    width: 90vw;
+    margin: auto;
+    display: grid;
+    grid-template-areas:
+        "pertama kedua"
+        "ketiga ketiga"
+    ;
+    padding-block: 3em;
+    gap: 3em;
+}
+
+main .help .tentangWeb {
+    grid-area: pertama;
+    background-color: var(--hover-color);
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2em;
+}
+
+main .help .tentangWeb h1 {
+    font-size: 2.5em;
+}
+
+main .help .tentangWeb p {
+    font-size: 1.3em;
+}
+
+main .help .Resep {
+    grid-area: kedua;
+    background-color: var(--hover-color);
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2em;
+}
+
+main .help .Resep h1 {
+    font-size: 2.5em;
+}
+
+main .help .Resep p {
+    font-size: 1.3em;
+}
+
+main .help .ResepYangSudahDibeli {
+    grid-area: ketiga;
+    background-color: var(--main-color);
+    color: var(--color-first);
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2em;
+}
+
+main .help .ResepYangSudahDibeli {
+    font-size: 2.5em;
+}
+
+main .help .ResepYangSudahDibeli {
+    font-size: 1.3em;
+}
+
+/* profile */
+main .profile {
+    width: 90vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+main .profile .img {
+    width: 30%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .profile .img img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+main .profile article {
+    width: 40%;
+    aspect-ratio: 16/5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+main .profile article h1 {
+    font-size: 1.5em;
+}
+
+main .profile article p {
+    font-size: 1.3em;
+}
+
+/* footer */
+main footer {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    padding-block: .5em;
+    color: var(--color-first);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+@media screen and (max-width: 990px) {
+    main nav {
+        justify-content: space-around;
+        gap: 0;
+    }
+
+    main nav ul {
+        width: 60%;
+    }
+
+    /* header */
+    main header {
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    main header :where(.first, .second) {
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    main header :where(.first img, .second img) {
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    main header .first h1 {
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    main header .second h1 {
+        height: auto;
+        text-align: center;
+        aspect-ratio: 16/9;
+    }
+
+    /* home */
+    main :where(.home, .src .bungkus) {
+        margin-top: 0;
+        padding: 2em 0;
+        gap: 2em;
+        justify-content: space-evenly;
+    }
+
+    main :where(.home .card, .src .bungkus .card) {
+        width: 35vw;
+    }
+
+    main :where(.home .card img, .src .bungkus .card img) {
+        width: 35vw;
+    }
+
+    /* full */
+    main .fullBlack .full .fullCard {
+        width: 80vw;
+        height: 60vh;
+    }
+
+    /* pembayaran */
+    main .pembayaran .box {
+        grid-template-columns: 1fr;
+    }
+
+    main .pembayaran .box article {
+        margin: auto;
+        margin-top: -3em;
+        padding: 0;
+        width: 85%;
+    }
+
+    main .pembayaran .box article h1 {
+        font-size: 3em;
+        margin-block: .5em;
+    }
+
+    main .pembayaran .box article p:nth-child(3) {
+        font-size: 2.1em;
+        margin-bottom: 1em;
+    }
+
+    /* src */
+    main .src form {
+        width: 80%;
+    }
+
+    main .src form input {
+        font-size: 1.3em;
+    }
+
+    main .src form button {
+        font-size: 1.3em;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    main nav {
+        justify-content: space-around;
+        gap: 0;
+        padding: .5em;
+    }
+
+    main nav .logo h1 {
+        font-size: 1.5em;
+    }
+
+    main nav .mobile {
+        display: flex;
+        width: 15%;
+        aspect-ratio: 1/1;
+        z-index: 999999;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    main nav .mobile span {
+        width: 100%;
+        height: 7%;
+        background-color: var(--color-first);
+        margin-right: 3em;
+        transition: 500ms;
+    }
+
+    main nav .mobile[data-burger="yes"] span:nth-child(2) {
+        display: none;
+    }
+
+    main nav .mobile[data-burger="yes"] span:nth-child(1) {
+        transform: rotate(35deg) translateX(19px);
+    }
+
+    main nav .mobile[data-burger="yes"] span:nth-child(3) {
+        transform: rotate(-36deg) translateX(17px);
+    }
+
+    main nav ul {
+        position: fixed;
+        right: 0;
+        flex-direction: column;
+        top: 0;
+        justify-content: center;
+        background-color: #355764;
+        width: 45vw;
+        gap: 3.5em;
+        bottom: 0;
+        padding: 0;
+        font-size: 1.1em;
+        transform: translateX(100%);
+        transition: 500ms;
+    }
+
+    main nav ul[data-burger="yes"] {
+        transform: translateX(0);
+    }
+
+    /* header */
+    main header .first h1 {
+        text-align: center;
+        font-size: 2em;
+    }
+
+    main header .second h1 {
+        font-size: 1.3em;
+    }
+
+    main header :where(.first h1, .second h1) {
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* home */
+    main :where(.home .card, .src .bungkus .card) {
+        width: 80vw;
+    }
+
+    main :where(.home .card img, .src .bungkus .card img) {
+        width: 80vw;
+    }
+
+    /* full */
+    main .fullBlack .full .fullCard article h1 {
+        font-size: 1.5em;
+    }
+
+    /* pembayaran */
+    main .pembayaran {
+        overflow-y: scroll;
+    }
+
+    main .pembayaran .box {
+        grid-template-columns: 1fr;
+    }
+
+    main .pembayaran .box article {
+        margin: auto;
+        margin-top: -2em;
+        padding: 0;
+        width: 90%;
+    }
+
+    main .pembayaran .box article h1 {
+        font-size: 2.3em;
+    }
+
+    main .pembayaran .box article p:nth-child(3) {
+        font-size: 1.5em;
+        margin-bottom: 1em;
+    }
+
+    main .pembayaran .box article select {
+        width: 40%;
+    }
+
+    /* src */
+    main .src .bungkus .hasilTidakDitemukan {
+        font-size: 3em;
+        text-align: center;
+    }
+
+    main .src form {
+        width: 80%;
+    }
+
+    /* help */
+    main .help {
+        grid-template-areas:
+            "pertama"
+            "kedua"
+            "ketiga"
+        ;
+        gap: 2em;
+    }
+
+    main .help .Resep {
+        grid-area: ketiga;
+    }
+
+    main .help .ResepYangSudahDibeli {
+        grid-area: kedua;
+    }
+}
