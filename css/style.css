@@ -28,7 +28,7 @@ body {
 }
 
 .scroll {
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 #offline {
@@ -195,7 +195,7 @@ main :where(.home .card, .src .bungkus .card) {
 }
 
 main :where(.home .card img, .src .bungkus .card img) {
-    width: 25vw;
+    width: 100%;
     aspect-ratio: 1/1;
     border-radius: 5px;
 }
@@ -863,5 +863,19 @@ main footer {
     .notif :where(.full .bungkus, .fullTerbeli .bungkus) {
         width: 80%;
         font-size: 1.3em;
+    }
+
+    /* profile */
+    main .profile {
+        justify-content: flex-start;
+    }
+
+    main .profile .img {
+        width: 70%;
+        margin-block: 3em;
+    }
+
+    main .profile .img img {
+        width: 100%;
     }
 }
